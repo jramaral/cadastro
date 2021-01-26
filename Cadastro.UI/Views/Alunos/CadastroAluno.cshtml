@@ -1,0 +1,122 @@
+﻿@using Cadastro.Dominio
+@model Cadastro.Dominio.Aluno
+
+@{
+    ViewBag.Title = "Index";
+      
+}
+
+<div class="container">
+    <h2>Cadastro de Alunos</h2>
+    
+    @using (Html.BeginForm())
+    {
+        @Html.ActionLink("Voltar", "Index", "Alunos", null, new { @class = "btn" })
+        <div class="row">
+            <div class="column-1">
+                <div class="campo">
+                    <label>Nome</label>
+                    @Html.TextBoxFor(model => Model.Nome, new { maxlength = 70 })
+                   
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <div class="campo">
+                    <label>CPF</label>
+                    @Html.TextBoxFor(model => Model.Cpf, new { maxlength = 11 })
+                </div>
+            </div>
+            <div class="column">
+                <div class="campo">
+                    <label>Rg</label>
+                    @Html.TextBoxFor(model => model.Rg, new { maxlength = 20 })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <div class="campo">
+                    <label>Telefone</label>
+                    @Html.TextBoxFor(model => Model.Telefone, new { maxlength = 11 })
+                </div>
+            </div>
+            <div class="column">
+                <div class="campo">
+                    <label>Gênero</label>
+                    @Html.DropDownList("Gênero", new SelectList(Enum.GetValues(typeof(Genero))), "")
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <div class="campo">
+                    <label>Matrícula</label>
+                    @Html.TextBoxFor(model => Model.Matricula, new { maxlength = 10 })
+                </div>
+            </div>
+            <div class="column">
+                <div class="campo">
+                    <label>Idade</label>
+                    @Html.TextBoxFor(model => Model.Idade, new { maxlength = 2 })
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column-1">
+                <div class="campo">
+                    <label>E-mail</label>
+                    @Html.TextBoxFor(model => Model.Email, new { maxlength = 50 })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column-1">
+                <div class="campo">
+                    <label>Cidade</label>
+                    @Html.DropDownList("Cidade", string.Empty)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <div class="campo">
+                    <label>Data Cadastro</label>
+                    @Html.TextBox("DtCad",DateTime.Now, new { @readonly = "readonly"})
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <div class="campo">
+                    <label>Data Nascimento</label>
+                    @Html.TextBoxFor(model => Model.DataNascimento)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column-1">
+                <div class="campo">
+                    <label>Nome Pai</label>
+                    @Html.TextBoxFor(model => Model.NomePai, new { maxlength = 50 })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column-1">
+                <div class="campo">
+                    <label>Nome Pai</label>
+                    @Html.TextBoxFor(model => Model.NomeMae, new { maxlength = 50 })
+                </div>
+            </div>
+        </div>
+        <button class="btn submit" type="submit" name="submit">Salvar</button>
+    }
+</div>
+

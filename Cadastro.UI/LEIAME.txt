@@ -1,0 +1,5 @@
+﻿Nome do banco de dados
+::cadastro
+
+Script de criação das tabelas
+Cadastro.UI -> Resource

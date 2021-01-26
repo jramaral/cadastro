@@ -1,0 +1,17 @@
+﻿@using System.Web
+@{
+
+    var controler = HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"].ToString();
+    string mylayout = "";
+
+    if(controler =="Home")
+    {
+        mylayout = "~/Views/Shared/_LayoutLogin.cshtml";
+    }
+    else
+    {
+        mylayout = "~/Views/Shared/_Layout.cshtml";
+    }
+    Layout = mylayout;
+
+}

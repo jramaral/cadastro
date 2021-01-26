@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Cadastro.Dominio.Aluno>
+@{
+    ViewBag.Title = "Index";
+    var grid = new WebGrid(source: Model, canPage: true, defaultSort: "CodigoID", rowsPerPage: 5, canSort: true);
+}
+
+<div class="container">
+    <div class="row">
+        <div class="column">
+            <div class="campo">
+                @Html.ActionLink("Novo Aluno", "CadastroAluno", "Alunos", null, new { @class = "btn" })
+            </div>
+        </div>
+        <div class="column">
+            <div class="campo">
+                @Html.ActionLink("Voltar", "Index", "Home", null, new { @class = "btn" })
+            </div>
+        </div>
+    </div>
+
+   
+    @grid.GetHtml(
+    tableStyle: "web-grid",
+    htmlAttributes: new { id = "checkableGrid" },
+    fillEmptyRows: true,
+    alternatingRowStyle: "alt",
+    headerStyle: "grid-header",
+    footerStyle: "foot",
+    mode: WebGridPagerModes.All,
+    firstText: "<< Primeiro",
+    previousText: "< Anterior",
+    nextText: "Próximo >",
+    lastText: "Ultimo >>",
+    emptyRowCellValue: null,
+    columns: new[]
+    {
+       grid.Column("Codigo",header:"Id"),
+       grid.Column("Nome",header:"Nome"),
+       grid.Column("CPF",header:"Cpf"),
+       grid.Column("Sexo",header:"Sexo"),
+       grid.Column("Cidade",header:"Cidade"),
+       grid.Column("",header:"Ações", format:@<text>@Html.ActionLink("Editar","EditarAluno", new {id=item.Codigo}) </text>)
+
+    }
+
+    )
+
+</div>

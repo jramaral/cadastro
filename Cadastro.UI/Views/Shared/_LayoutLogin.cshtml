@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Cadastro de Alunos</title>
+    @Styles.Render("~/Content/css")
+    
+</head>
+<body>
+    @RenderBody()
+    <div class="content">
+        <div class="topo">
+            <header>
+                <nav class="menu-opcoes">
+                    <ul class="menu">
+                        <li class="contact">
+                            <p> Usuário: @Session["usuarioid"] </p>
+                            @Html.ActionLink("Logout", "logout", "Usuario")
+                        </li>
+
+                    </ul>
+                </nav>
+
+                <hgroup class="titulo">
+                    <h1>JRA</h1>
+                    <h2>Cadastro de Alunos</h2>
+
+                </hgroup>
+                <div id="nav">
+                    <ul>
+                        
+                        <li>
+                            @Html.ActionLink("Cadastro de Alunos", "Index", "Alunos")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Cadastro de Cidades", "Index", "Cidade")
+                        </li>
+                       
+                        <li>
+                            @Html.ActionLink("Relatórios", "Index", "Report")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Gráfico", "Index", "Grafico")
+                        </li>
+                    </ul>
+                </div>
+                
+            </header>
+
+        </div>
+       
+
+        
+       
+    </div>
+   
+    @Scripts.Render("~/bundles/jquery")
+    
+    @RenderSection("scripts", required: false)
+</body>
+</html>

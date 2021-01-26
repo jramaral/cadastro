@@ -1,0 +1,35 @@
+﻿@model Cadastro.Dominio.Usuario
+@{
+    ViewBag.Title = "Logar";
+}
+
+<div class="container-login">
+    <div class="card">
+        <section class="signin">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+                <h2>Acesso ao Sistema</h2>
+                @Html.Label("E-mail:")<br />
+                @Html.TextBoxFor(model => Model.Email, new { maxlength = "50" })<br />
+                @Html.Label("Senha:")<br />
+                @Html.PasswordFor(model => Model.Senha, new { maxlength = "6" })<br />
+
+                <input class="btn" type="submit" value="Enviar">
+
+                <p> Me inscrever, clique @Html.ActionLink("Aqui", "CadastraUsuario", "Usuario")</p><br>
+
+            }
+            
+
+        </section>
+    </div>
+</div>
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
+

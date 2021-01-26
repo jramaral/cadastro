@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container-report">
+    <div class="report-menu">
+        <a href="#" class="active">Relatórios</a>
+        <a @Html.ActionLink("Alunos", "ReportAluno", "Report")</a>
+        <a @Html.ActionLink("Alunos por Cidade", "ReportAlunoCidade", "Report")</a>
+        <a @Html.ActionLink("Cidades", "ReportCidade", "Report")</a>
+        
+    </div>
+    <div class="report-menu">
+        @Html.ActionLink("Voltar", "Index", "Home", null, new { @class = "active" })
+    </div>
+
+     
+</div>

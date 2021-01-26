@@ -1,0 +1,41 @@
+﻿@model Cadastro.Dominio.Cidade
+@{
+    ViewBag.Title = "CadastrarCidade";
+}
+
+<div class="container">
+
+    @using (Html.BeginForm())
+    {
+        @Html.ActionLink("Voltar", "Index", "Cidade", null, new { @class = "btn" })
+        @Html.ValidationSummary(true)
+
+        <h2>Cadastro de Cidades</h2>
+
+        <div class="row">
+            <div class="column-1">
+                <div class="campo">
+                    @Html.Label("Nome da Cidade")
+                    @Html.TextBoxFor(model => Model.NomeCidade, new { maxlength = 50 })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <div class="campo">
+                    @Html.Label("UF")
+                    @Html.TextBoxFor(model => Model.UF, new { maxlength = 2 })
+                </div>
+            </div>
+            <div class="column">
+                <div class="campo">
+                    @Html.Label("Cep")
+                    @Html.TextBoxFor(model => Model.Cep, new { maxlength = 8 })
+                </div>
+            </div>
+        </div>
+
+        <button class="btn submit" type="submit" name="submit">Salvar</button>
+    }
+</div>
+

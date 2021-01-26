@@ -1,0 +1,218 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+input[type=text], input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.container {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    width: 600px;
+    color: #0076a3;
+    
+}
+
+.container-login {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px;
+    width: 350px;
+    color: #0076a3;
+    
+}
+
+body {
+    margin: 0;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 1px;
+    padding-right: 10px
+}
+
+.column-1 {
+    float: left;
+    width: 100%;
+    padding: 1px;
+    padding-right: 10px
+}
+
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/*Inicio do configuracao do cabeçalho da pagina*/
+.content {
+    background-color: #7ac0da;
+    background-image: -ms-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
+    background-image: -o-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #7ac0da), color-stop(1, #a4d4e6));
+    background-image: -webkit-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
+    background-image: linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
+    padding: 20px 40px 30px 40px;
+    border-radius: 0px 0px 15px 15px;
+}
+
+hgroup.titulo {
+    margin-bottom: 10px;
+}
+
+    hgroup.titulo h1, hgroup.titulo h2 {
+        display: inline;
+        color: white;
+    }
+
+    hgroup.titulo h2 {
+        font-weight: normal;
+        margin-left: 3px;
+    }
+
+
+.menu-opcoes {
+    float: right;
+}
+
+ul.menu {
+    list-style: none;
+    padding-left: 0;
+}
+
+    /*ul.menu li {
+        margin: 15px;
+        padding-left: 45px;
+        height: 30px; 
+        padding-top: 5px;
+    }*/
+
+        /*ul.menu li.contact {
+            background: url("268.png")no-repeat;
+            text-decoration: none;
+        }*/
+
+            ul.menu li.contact a {
+                text-decoration: none;
+            }
+
+#nav { /*configuração do tamanho da div de navegação*/
+    width: 900px; /*largural*/
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    #nav li { /*Formata a lista*/
+        list-style: none; /*remova o estilo de listagem*/
+        float: left;
+        height: 40px; /*altura de cada item*/
+        background-color: #7ac0da; /*cor de fundo de cada item*/
+        border-radius: 9px;
+        text-align: center;
+        display: inline;
+        padding: 10px 10px 10px 10px;
+        width: 170px;
+    }
+
+        #nav li:hover {
+            background-color: #ccc;
+        }
+
+    #nav a { /*formatação de cada link ou tag <a>*/
+        text-decoration: none;
+        display: block;
+        height: 30px;
+        font-size: 18px;
+    }
+
+.logout {
+    padding-left: 20px;
+}
+/*fim do configuracao do cabeçalho da pagina*/
+
+/*Configuração Menu Relatoriio*/
+.container-report {
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: auto;
+    height: 100%;
+    width: 600px;
+    color: #0076a3;
+}
+
+.report-menu {
+    width: 200px;
+}
+
+    .report-menu a {
+        background-color: #eee;
+        color: black;
+        display: block;
+        padding: 12px;
+        text-decoration: none;
+    }
+
+        .report-menu a:hover {
+            background-color: #ccc;
+        }
+
+        .report-menu a.active {
+            background-color: #7ac0da;
+            color: white;
+        }
+.success {
+    background-color: #4CAF50;
+}
+    /* Green */
+    .success:hover {
+        background-color: #46a049;
+    }
+
+
+    /*Estilizando Web Grid*/
+.web-grid {
+    border: solid 1px black;
+    border-collapse: collapse;
+    display: table;
+    margin-top: 20px;
+    width:100%;
+}
+    .web-grid td, th {
+        border: 1px solid black;
+    }
+
+
+.webgrid-table{
+    border:solid 1px;
+    border-collapse:collapse;
+    display:table;
+    margin-left:50px;
+    margin-top:20px;
+   
+}
+.webgrid-table td, th{
+    border:1px solid;
+}

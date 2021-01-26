@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Cadastro.Dominio.Aluno>
+@{
+    ViewBag.Title = "Index";
+    var grid = new WebGrid(source: Model, defaultSort: "CodigoID");
+}
+
+   
+    @grid.GetHtml(
+    tableStyle: "webgrid-table",
+    htmlAttributes: new { id = "checkableGrid" },
+    fillEmptyRows: true,
+    alternatingRowStyle: "alt",
+    headerStyle: "gridheader",
+    footerStyle: "gridfoot",
+    mode: WebGridPagerModes.All,
+    emptyRowCellValue: null,
+    columns: new[]
+    {
+       grid.Column("Codigo",header:"Id"),
+       grid.Column("Nome",header:"Nome"),
+       grid.Column("CPF",header:"Cpf"),
+       grid.Column("Telefone",header:"Telefone"),
+       grid.Column("Email",header:"Email"),
+       grid.Column("Sexo",header:"Sexo"),
+       grid.Column("Cidade",header:"Cidade"),
+       grid.Column("Endereco",header:"Endereço")
+
+    }
+
+    )
