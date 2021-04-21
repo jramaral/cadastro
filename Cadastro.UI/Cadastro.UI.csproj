@@ -165,8 +165,8 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <None Include="Resources\SQLQueryCreate.sql" />
     <Content Include="LEIAME.txt" />
+    <Content Include="Resources\SQLQueryCreateTable.sql" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -183,7 +183,6 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="SQLQueryCreateTable.sql" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

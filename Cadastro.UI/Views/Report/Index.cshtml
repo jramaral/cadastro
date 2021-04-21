@@ -6,9 +6,9 @@
 <div class="container-report">
     <div class="report-menu">
         <a href="#" class="active">Relatórios</a>
-        <a @Html.ActionLink("Alunos", "ReportAluno", "Report")</a>
-        <a @Html.ActionLink("Alunos por Cidade", "ReportAlunoCidade", "Report")</a>
-        <a @Html.ActionLink("Cidades", "ReportCidade", "Report")</a>
+        @Html.ActionLink("Alunos", "ReportAluno", "Report")
+        @Html.ActionLink("Alunos por Cidade", "ReportAlunoCidade", "Report")
+        @Html.ActionLink("Cidades", "ReportCidade", "Report")
         
     </div>
     <div class="report-menu">
