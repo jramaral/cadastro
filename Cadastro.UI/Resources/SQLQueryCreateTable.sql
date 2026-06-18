@@ -14,6 +14,15 @@ create table Alunos(
 	Email varchar(50),
 	constraint pk_codigoId_aluno primary key (CodigoID)
 )
+create table Diretores(
+	DiretorId int IDENTITY(1,1) NOT NULL,
+	Nome varchar(100),
+	Email varchar(50),
+	Cidade varchar(50),
+	Telefone varchar(11),
+	DataCadastro datetime,
+	constraint pk_diretorId_diretor primary key (DiretorId)
+)
 create table Cidade(
         CodigoCidade int IDENTITY(1,1) NOT NULL,
         NomeCidade varchar(50),
@@ -21,7 +30,6 @@ create table Cidade(
         Cep varchar(15),
 		constraint pk_codigoCidade primary key (CodigoCidade)
 )
-
 create table Usuario(
     CodigoID int IDENTITY(1,1) NOT NULL,
     Nome varchar(50),
@@ -35,7 +43,6 @@ create table Usuario(
 	Telefone varchar(15),
 	CONSTRAINT PK_CODIGOID PRIMARY KEY (CodigoID)
 )
-
 create table Filiacao(
  CodigoID_Aluno int,
  NomePai varchar(50),
