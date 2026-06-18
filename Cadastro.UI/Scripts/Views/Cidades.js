@@ -56,6 +56,11 @@
             })
     }
 
+    function gerarPdf() {
+
+       
+    }
+
     return {
         ConfigurarListar: function () {
             console.log("Cidades");
@@ -125,6 +130,26 @@
                 }
             });
             configurarEventos();
+           
+        },
+        ImprimirPdf: function () {
+            $.ajax({
+
+                url: '/Cidade/GerarPdf',
+                type: 'POST',
+                data: {
+                    id: 123
+                },
+                xhrFields: {
+                    responseType: 'blob'
+                }, // importante para receber o arquivo como blob
+                success: function (blob) {
+                    var fileURL = URL.createObjectURL(blob);
+
+                    window.open(fileURL, '_blank');
+                }
+
+            });
         }
     }
 }();

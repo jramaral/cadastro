@@ -1,14 +1,23 @@
-﻿using System;
+﻿using Cadastro.Aplicacao;
+using Cadastro.Dominio;
+using Cadastro.UI.Models;
+using Cadastro.UI.Validations;
+using iText.IO.Font.Constants;
+using iText.IO.Image;
+using iText.Kernel.Font;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Borders;
+using iText.Layout.Element;
+using iText.Layout.Properties;
+using Newtonsoft.Json;
+using System;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Configuration;
 using System.Web.Mvc;
-using Cadastro.Aplicacao;
-using Cadastro.Dominio;
-using Cadastro.UI.Models;
-using Cadastro.UI.Validations;
-using Newtonsoft.Json;
 
 namespace Cadastro.UI.Controllers
 {
@@ -138,6 +147,75 @@ namespace Cadastro.UI.Controllers
                     response));
 
             return JsonConvert.DeserializeObject<CaptchaResponse>(jsonResult);
+        }
+        [HttpPost]
+        public FileResult GerarPdf(int id)
+        {
+
+            using (var memoryStream = new MemoryStream())
+            {
+                PdfWriter writer = new PdfWriter(memoryStream);
+                PdfDocument pdf = new PdfDocument(writer);
+                Document document = new Document(pdf);
+
+                document.SetMargins(20, 20, 20, 20);
+
+                string caminhoLogo = Server.MapPath("~/Content/img/logo_empresa.png");
+
+                var fontBold = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
+                var fontNormal = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
+
+                Table cabecalho = new Table(new UnitValue[]
+                    {
+                        UnitValue.CreatePointValue(90),
+                        UnitValue.CreatePercentValue(100)
+                    });
+                cabecalho.UseAllAvailableWidth();
+
+                //Logo
+                ImageData imageData = ImageDataFactory.Create(caminhoLogo);
+
+                Image logo = new Image(imageData);
+                logo.ScaleToFit(140, 60);
+
+                Cell celulaLogo = new Cell()
+                    .Add(logo)
+                    .SetVerticalAlignment(VerticalAlignment.MIDDLE)
+                    .SetTextAlignment(TextAlignment.CENTER);
+
+                cabecalho.AddCell(celulaLogo);
+
+                //dados da empresa
+                Table dadosEmpresa = new Table(1);
+                dadosEmpresa.UseAllAvailableWidth();
+
+                dadosEmpresa.AddCell(new Cell()
+                    .Add(new Paragraph("EMPRESA XYZ LTDA").SetFont(fontBold))
+                    .SetTextAlignment(TextAlignment.CENTER)
+                    .SetBorder(Border.NO_BORDER));
+
+
+                dadosEmpresa.AddCell(new Cell()
+                       .Add(new Paragraph($"Data de emissão: {DateTime.Now:dd/MM/yyyy HH:mm}"))
+                       .SetTextAlignment(TextAlignment.CENTER)
+                       .SetBorder(Border.NO_BORDER));
+
+                Cell celulaEmpresa = new Cell()
+                    .Add(dadosEmpresa)
+                    .SetVerticalAlignment(VerticalAlignment.MIDDLE);
+
+                cabecalho.AddCell(celulaEmpresa);
+
+                document.Add(cabecalho);
+
+                document.Close();
+
+                byte[] bytes = memoryStream.ToArray();
+
+                return File(bytes, "application/pdf", "RelatorioCidades.pdf");
+
+            }
+
         }
     }
 }

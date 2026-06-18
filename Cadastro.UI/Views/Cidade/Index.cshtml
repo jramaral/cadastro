@@ -12,6 +12,9 @@
         <div class="col-3 tam-mt-10 tam-mb-10">
             @Html.ActionLink("Nova Cidade", "CadastrarCidade", "Cidade", null, new { @class = "btn btn-primary" })
             @Html.ActionLink("Voltar", "Index", "Home", null, new { @class = "btn btn-success tam-with-45" })
+            
+            <button type="button" onclick="ConfigCidade.ImprimirPdf()">Imprimir</button>
+
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
