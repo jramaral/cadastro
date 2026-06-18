@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cadastro.Dominio
 {
@@ -17,6 +13,7 @@ namespace Cadastro.Dominio
 
         [Required(ErrorMessage = "cpf deve ser informado.!")]
         public string Cpf { get; set; }
+
         public string Telefone { get; set; }
 
         [Required(ErrorMessage = "O e-mail deve ser informado.!")]

@@ -1,48 +1,48 @@
 ﻿@model IEnumerable<Cadastro.Dominio.Aluno>
 @{
     ViewBag.Title = "Index";
-    var grid = new WebGrid(source: Model, canPage: true, defaultSort: "CodigoID", rowsPerPage: 5, canSort: true);
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "CodigoID", rowsPerPage: 5, canSort: true);
 }
 
-<div class="container">
+<div class="container-page">
     <div class="row">
-        <div class="column">
-            <div class="campo">
-                @Html.ActionLink("Novo Aluno", "CadastroAluno", "Alunos", null, new { @class = "btn" })
+
+            <div class="col-3 tam-mt-10 tam-mb-10">
+                @Html.ActionLink("Novo Aluno", "CadastroAluno", "Alunos", null, new { @class = "btn btn-primary " })
+                @Html.ActionLink("Voltar", "Index", "Home", null, new { @class = "btn btn-success tam-with-45" })
             </div>
+
+
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <section id="datatable" class="w-100 p-2 shadow bg-white d-block border mb-3 rounded-lg">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="table-responsive mb-2">
+                            <table id="tabela_alunos"
+                                   class="table table-bordered table-striped display compact hover w-100 m-0"></table>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-        <div class="column">
-            <div class="campo">
-                @Html.ActionLink("Voltar", "Index", "Home", null, new { @class = "btn" })
-            </div>
-        </div>
+
+
     </div>
 
-   
-    @grid.GetHtml(
-    tableStyle: "web-grid",
-    htmlAttributes: new { id = "checkableGrid" },
-    fillEmptyRows: true,
-    alternatingRowStyle: "alt",
-    headerStyle: "grid-header",
-    footerStyle: "foot",
-    mode: WebGridPagerModes.All,
-    firstText: "<< Primeiro",
-    previousText: "< Anterior",
-    nextText: "Próximo >",
-    lastText: "Ultimo >>",
-    emptyRowCellValue: null,
-    columns: new[]
-    {
-       grid.Column("Codigo",header:"Id"),
-       grid.Column("Nome",header:"Nome"),
-       grid.Column("CPF",header:"Cpf"),
-       grid.Column("Sexo",header:"Sexo"),
-       grid.Column("Cidade",header:"Cidade"),
-       grid.Column("",header:"Ações", format:@<text>@Html.ActionLink("Editar","EditarAluno", new {id=item.Codigo}) </text>)
-
-    }
-
-    )
-
+    @*<div class="row">
+        <div id="divTabelaHtml">
+            @Html.Partial("_TabelaAlunos", Model)
+        </div>
+    </div>*@
 </div>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/alunos")
+
+    <script type="text/javascript">
+        ConfigAlunos.ConfigurarListar();
+    </script>
+
+}
+

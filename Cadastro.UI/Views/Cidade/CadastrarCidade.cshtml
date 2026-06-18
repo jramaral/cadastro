@@ -3,39 +3,46 @@
     ViewBag.Title = "CadastrarCidade";
 }
 
-<div class="container">
+<div class="container-page">
 
+    <h2>Cadastro de Cidades</h2>
     @using (Html.BeginForm())
     {
-        @Html.ActionLink("Voltar", "Index", "Cidade", null, new { @class = "btn" })
-        @Html.ValidationSummary(true)
+        <div class="container-page">
+            @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+            <div class="row">
 
-        <h2>Cadastro de Cidades</h2>
-
-        <div class="row">
-            <div class="column-1">
-                <div class="campo">
+                <div class="col-6 form-group campo">
                     @Html.Label("Nome da Cidade")
-                    @Html.TextBoxFor(model => Model.NomeCidade, new { maxlength = 50 })
+                    @Html.TextBoxFor(model => Model.NomeCidade, new { maxlength = 50, @class = "form-control" })
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="column">
-                <div class="campo">
-                    @Html.Label("UF")
-                    @Html.TextBoxFor(model => Model.UF, new { maxlength = 2 })
-                </div>
-            </div>
-            <div class="column">
-                <div class="campo">
-                    @Html.Label("Cep")
-                    @Html.TextBoxFor(model => Model.Cep, new { maxlength = 8 })
-                </div>
-            </div>
-        </div>
 
-        <button class="btn submit" type="submit" name="submit">Salvar</button>
+            <div class="row">
+                <div class="col-3 form-group campo">
+                    @Html.Label("UF")
+                    @Html.TextBoxFor(model => Model.UF, new { maxlength = 2, @class = "form-control" })
+                </div>
+                <div class="col-3 form-group campo">
+                    @Html.Label("Cep")
+                    @Html.TextBoxFor(model => Model.Cep, new { maxlength = 8, @class = "form-control" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="g-recaptcha" data-sitekey="6LeFoEQqAAAAAHZw2C-xCXNhgbQNYu8-mRTe3qKk"></div>
+                </div>
+                <span style="display:inline-block; font-size:20px;margin:20px 0;padding:20px;border:0px solid #D3D3D3">
+                    @ViewBag.ErroCaptcha
+                </span>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button class="btn btn-primary submit btn-form-acao mr-2 " type="submit" name="submit">Salvar</button>
+                @Html.ActionLink("Voltar", "Index", "Cidade", null, new { @class = "btn btn-success btn-form-acao" })
+            </div>
+
+        </div>
     }
 </div>
 

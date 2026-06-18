@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<Cadastro.Dominio.Aluno>
 @{
     ViewBag.Title = "Index";
-    var grid = new WebGrid(source: Model, defaultSort: "CodigoID");
+    var grid = new WebGrid(Model, defaultSort: "CodigoID");
 }
 
-   
-    @grid.GetHtml(
-    tableStyle: "webgrid-table",
+
+@grid.GetHtml(
+    "webgrid-table",
     htmlAttributes: new { id = "checkableGrid" },
     fillEmptyRows: true,
     alternatingRowStyle: "alt",
@@ -16,15 +16,13 @@
     emptyRowCellValue: null,
     columns: new[]
     {
-       grid.Column("Codigo",header:"Id"),
-       grid.Column("Nome",header:"Nome"),
-       grid.Column("CPF",header:"Cpf"),
-       grid.Column("Telefone",header:"Telefone"),
-       grid.Column("Email",header:"Email"),
-       grid.Column("Sexo",header:"Sexo"),
-       grid.Column("Cidade",header:"Cidade"),
-       grid.Column("Endereco",header:"Endereço")
-
+        grid.Column("Codigo",  "Id"),
+        grid.Column("Nome",  "Nome"),
+        grid.Column("CPF",  "Cpf"),
+        grid.Column("Telefone",  "Telefone"),
+        grid.Column("Email",  "Email"),
+        grid.Column("Sexo",  "Sexo"),
+        grid.Column("Cidade",  "Cidade"),
+        grid.Column("Endereco",  "Endereço")
     }
-
-    )
+)

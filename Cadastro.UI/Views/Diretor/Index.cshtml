@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Cadastro.Dominio.Diretor>
+@{
+    ViewBag.Title = "Index";
+  }
+
+<div class="container-page">
+    <div class="row">
+        <div class="col-3 tam-mt-10 tam-mb-10">
+           
+            @Html.ActionLink("Novo Diretor", "CadastroDiretor", "Diretor", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Voltar", "Index", "Home", null, new { @class = "btn btn-success tam-with-45" })
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <section id="datatable" class="w-100 p-2 shadow bg-white d-block border mb-3 rounded-lg">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="table-responsive mb-2">
+                            <table id="tabeladiretores"
+                                   class="table table-bordered table-striped display compact hover w-100 m-0"></table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/diretores")
+
+    <script type="text/javascript">
+        ConfigDiretores.ConfigurarListar();
+    </script>
+
+}

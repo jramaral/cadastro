@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
-using System.Data;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Cadastro.Repositorio
 {
-    public class Contexto:IDisposable
+    public class Contexto : IDisposable
     {
         private readonly SqlConnection conexao;
 
@@ -18,7 +14,15 @@ namespace Cadastro.Repositorio
             conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["cadastro"].ConnectionString);
             conexao.Open();
         }
-        public void ExecutaComando(String query)
+
+
+        public void Dispose()
+        {
+            if (conexao.State == ConnectionState.Open)
+                conexao.Close();
+        }
+
+        public void ExecutaComando(string query)
         {
             var cmd = new SqlCommand
             {
@@ -29,7 +33,7 @@ namespace Cadastro.Repositorio
             cmd.ExecuteNonQuery();
         }
 
-        public void ExecutaComando(String query, out int i)
+        public void ExecutaComando(string query, out int i)
         {
             var cmd = new SqlCommand
             {
@@ -39,7 +43,18 @@ namespace Cadastro.Repositorio
             };
             cmd.ExecuteNonQuery();
             cmd.CommandText = "Select @@IDENTITY";
-            i = Convert.ToInt32(cmd.ExecuteScalar());  
+            i = Convert.ToInt32(cmd.ExecuteScalar());
+        }
+
+        public void ExecutaComandoTotalRegistro(string query, out int i)
+        {
+            var cmd = new SqlCommand
+            {
+                CommandText = query,
+                CommandType = CommandType.Text,
+                Connection = conexao
+            };
+            i = Convert.ToInt32(cmd.ExecuteScalar());
         }
 
 
@@ -47,13 +62,6 @@ namespace Cadastro.Repositorio
         {
             var cmd = new SqlCommand(query, conexao);
             return cmd.ExecuteReader();
-        }
-
-
-        public void Dispose()
-        {
-            if (conexao.State == ConnectionState.Open)
-                conexao.Close();
         }
     }
 }

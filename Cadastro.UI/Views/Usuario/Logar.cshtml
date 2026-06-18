@@ -2,29 +2,77 @@
 @{
     ViewBag.Title = "Logar";
 }
+<style>
+    .btn-color {
+        background-color: #0e1c36;
+        color: #fff;
 
-<div class="container-login">
-    <div class="card">
-        <section class="signin">
-            @using (Html.BeginForm())
-            {
-                @Html.ValidationSummary(true)
-                <h2>Acesso ao Sistema</h2>
-                @Html.Label("E-mail:")<br />
-                @Html.TextBoxFor(model => Model.Email, new { maxlength = "50" })<br />
-                @Html.Label("Senha:")<br />
-                @Html.PasswordFor(model => Model.Senha, new { maxlength = "6" })<br />
+    }
 
-                <input class="btn" type="submit" value="Enviar">
+    .profile-image-pic {
+        height: 100px;
+        width: 100px;
+        object-fit: cover;
+    }
 
-                <p> Me inscrever, clique @Html.ActionLink("Aqui", "CadastraUsuario", "Usuario")</p><br>
+    .cardbody-color {
+        background-color: #ebf2fa;
+    }
 
-            }
-            
+    a {
+        text-decoration: none;
+    }
 
-        </section>
+    .card input {
+        border: 1px solid #ccc !important;
+
+    }
+
+    .btn-logar {
+
+    }
+
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center text-dark mt-5">Login</h2>
+            <div class="text-center mb-5 text-dark">Sistema Cadastro WEB</div>
+            <div class="card my-5">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="text-center">
+                        <img src="~/Content/img/fingerprint_480px.png"
+                             class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+                             width="200px" alt="profile">
+                    </div>
+
+
+                    <div class="mb-3">
+                        @Html.TextBoxFor(model => Model.Email, new { maxlength = "50", @class = "form-control", placeholder = "Email" })
+                    </div>
+                    <div class="mb-3">
+                        @Html.PasswordFor(model => Model.Senha, new { maxlength = "6", @class = "form-control", placeholder = "senha" })
+                    </div>
+                    <div class="text-center">
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-color px-5 mb-5 w-100">Login</button>
+                        </div>
+                    </div>
+                    <div id="emailHelp" class="form-text text-center mb-5 text-dark">
+                        Me inscrever, clique @Html.ActionLink("Aqui", "CadastraUsuario", "Usuario")
+                    </div>
+                }
+            </div>
+
+
+        </div>
     </div>
 </div>
+
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")
 }

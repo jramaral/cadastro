@@ -24,9 +24,9 @@
     color: white;
 }
 
-    #content-usuario h3 {
-        color: #ffffff;
-    }
+#content-usuario h3 {
+    color: #ffffff;
+}
 
 .content {
     background-color: #7ac0da;
@@ -43,15 +43,16 @@ hgroup.titulo {
     margin-bottom: 10px;
 }
 
-    hgroup.titulo h1, hgroup.titulo h2 {
-        display: inline;
-        color: white;
-    }
+hgroup.titulo h1, hgroup.titulo h2 {
+    display: inline;
+    color: white;
+    color: #090b0d !important;
+}
 
-    hgroup.titulo h2 {
-        font-weight: normal;
-        margin-left: 3px;
-    }
+hgroup.titulo h2 {
+    font-weight: normal;
+    margin-left: 3px;
+}
 
 .menu-opcoes {
     float: right;
@@ -62,21 +63,21 @@ ul.menu {
     padding-left: 0;
 }
 
-    ul.menu li {
-        margin: 15px;
-        padding-left: 45px;
-        height: 30px; /*altura de cada item*/
-        padding-top: 5px;
-    }
+ul.menu li {
+    margin: 15px;
+    padding-left: 45px;
+    height: 30px; /*altura de cada item*/
+    padding-top: 5px;
+}
 
-        ul.menu li.contact {
-            background: url("268.png")no-repeat;
-            text-decoration: none;
-        }
+ul.menu li.contact {
+    /*background: url("268.png")no-repeat;*/
+    text-decoration: none;
+}
 
-            ul.menu li.contact a {
-                text-decoration: none;
-            }
+ul.menu li.contact a {
+    text-decoration: none;
+}
 
 #nav { /*configuração do tamanho da div de navegação*/
     width: 900px; /*largural*/
@@ -85,28 +86,32 @@ ul.menu {
     margin-right: auto;
 }
 
-    #nav li { /*Formata a lista*/
-        list-style: none; /*remova o estilo de listagem*/
-        float: left;
-        height: 30px; /*altura de cada item*/
-        background-color: #7ac0da; /*cor de fundo de cada item*/
-        border-radius: 21px;
-        text-align: center;
-        display: inline;
-        padding: 10px 10px 10px 10px;
-        width: 150px;
-    }
+#nav li { /*Formata a lista*/
+    list-style: none; /*remova o estilo de listagem*/
+    float: left;
+    height: 30px; /*altura de cada item*/
+    background-color: #57AFD0; /*cor de fundo de cada item*/
+    border-radius: 21px;
+    text-align: center;
+    display: inline;
+    /*        padding: 10px 10px 10px 10px;*/
+    width: 150px;
+}
 
-        #nav li:hover {
-            background-color: #ccc;
-        }
+#nav li:hover {
+    background-color: #ccc;
+}
 
-    #nav a { /*formatação de cada link ou tag <a>*/
-        text-decoration: none;
-        display: block;
-        height: 30px;
-        font-size: 18px;
-    }
+#nav a {
+    /*formatação de cada link ou tag <a>*/
+    text-decoration: none;
+    height: 30px;
+    font-size: 12px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: black !important;
+}
 
 .contente-g {
     background: #E4F2F8;
@@ -124,24 +129,24 @@ ul.menu {
     border-radius: 10px;
 }
 
-    .box1:hover, .box2:hover, .box3:hover {
-        box-shadow: 5px 5px 10px #0076a3;
-        -webkit-box-shadow: 5px 5px 10px #0076a3;
-        -moz-box-shadow: 5px 5px 10px #0076a3;
-    }
+.box1:hover, .box2:hover, .box3:hover {
+    box-shadow: 5px 5px 10px #0076a3;
+    -webkit-box-shadow: 5px 5px 10px #0076a3;
+    -moz-box-shadow: 5px 5px 10px #0076a3;
+}
 
 .box1 {
-    background: url("nfe.png")no-repeat;
+    background: url("nfe.png") no-repeat;
     background-size: 200px 100px;
 }
 
 .box2 {
-    background: url("sefaz.png")no-repeat;
+    background: url("sefaz.png") no-repeat;
     background-size: 200px 100px;
 }
 
 .box3 {
-    background: url("sped.png")no-repeat;
+    background: url("sped.png") no-repeat;
     background-size: 200px 100px;
 }
 
@@ -165,10 +170,10 @@ footer {
     padding: 10px;
 }
 
-    #content-sobre p {
-        padding: 10px;
-        text-align: justify
-    }
+#content-sobre p {
+    padding: 10px;
+    text-align: justify
+}
 
 .container {
     margin-top: 50px;
@@ -192,34 +197,33 @@ footer {
 
 
 .signin {
-    margin-left: 20px;
+    /*margin-left: 20px;*/
 }
 
-    .signin h2 {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        border-bottom: 1px solid #CCC;
-        width: 300px;
-    }
+.signin h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #CCC;
+    width: 300px;
+}
 
 .card {
-    /*border-radius: 5px;*/
-    /* border:1px solid #CCC;*/
-    position: absolute;
-    height: 300px;
-    width: 340px;
+
+    height: 320px !important;
+    width: 340px !important;
+    padding: 1rem !important;
 }
 
-    .card input {
-        width: 300px;
-        height: 30px;
-        color: #666666;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
-        font-family: "Times New Roman",monospace;
-        font-size: 14px;
-    }
+.card input {
+    width: 300px;
+    height: 30px;
+    color: #666666;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    font-family: "Times New Roman", monospace;
+    font-size: 14px;
+}
 
 .manutencao {
     margin-top: 50px;
@@ -248,3 +252,13 @@ footer {
 .logout {
     padding-left: 20px;
 }
+
+#me-inscrever {
+    margin-bottom: 0px !important;
+}
+
+/*a {*/
+/*    color: #090b0d !important;*/
+/*    text-decoration: none !important;*/
+/*    background-color: transparent !important;*/
+/*}*/

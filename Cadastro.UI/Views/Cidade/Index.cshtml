@@ -1,52 +1,71 @@
 ﻿@model IEnumerable<Cadastro.Dominio.Cidade>
 @{
     ViewBag.Title = "Index";
-    var grid = new WebGrid(source: Model, canPage: true, defaultSort: "CodigoCidade", rowsPerPage: 5, canSort: true);
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "CodigoCidade", rowsPerPage: 5, canSort: true);
 }
 
 
 
-<div class="container">
+<div class="container-page">
 
     <div class="row">
-        <div class="column">
-            <div class="campo">
-                @Html.ActionLink("Nova Cidade", "CadastrarCidade", "Cidade", null, new { @class = "btn" })
-            </div>
+        <div class="col-3 tam-mt-10 tam-mb-10">
+            @Html.ActionLink("Nova Cidade", "CadastrarCidade", "Cidade", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Voltar", "Index", "Home", null, new { @class = "btn btn-success tam-with-45" })
         </div>
-        <div class="column">
-            <div class="campo">
-                @Html.ActionLink("Voltar", "Index", "Home", null, new { @class = "btn" })
-            </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <section id="datatable" class="w-100 p-2 shadow bg-white d-block border mb-3 rounded-lg">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="table-responsive mb-2">
+                            <table id="tabelacidades"
+                                   class="table table-bordered table-striped display compact hover w-100 m-0"></table>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
-
-    @grid.GetHtml(
-    tableStyle: "web-grid",
-    htmlAttributes: new { id = "checkableGrid" },
-    fillEmptyRows: true,
-    alternatingRowStyle: "alt",
-    headerStyle: "grid-header",
-    footerStyle: "foot",
-    mode: WebGridPagerModes.All,
-    firstText: "<< Primeiro",
-    previousText: "< Anterior",
-    nextText: "Próximo >",
-    lastText: "Ultimo >>",
-    caption: "Lista de Cidades",
-    emptyRowCellValue: null,
-    columns: new[]
-    {
-       grid.Column("CodigoCidade",header:"Id", style:"text-align-left"),
-       grid.Column("NomeCidade",header:"Cidade"),
-       grid.Column("Uf",header:"UF"),
-       grid.Column("Cep",header:"Cep"),
-       grid.Column("",header:"Ações", format:@<text>@Html.ActionLink("Editar","AtualizaCidade", new {id=item.CodigoCidade}) </text>)
-
-    }
-
-    )
-
-
-
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalConfirmacao" tabindex="-1" role="dialog" aria-labelledby="tituloModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="tituloModal">Confirmação</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span>&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                Tem certeza que deseja realizar essa ação?
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    Não
+                </button>
+
+                <button type="button" class="btn btn-primary" id="btnConfirmar">
+                    Sim
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/cidades")
+
+    <script type="text/javascript">
+        ConfigCidade.ConfigurarListar();
+    </script>
+
+}
+

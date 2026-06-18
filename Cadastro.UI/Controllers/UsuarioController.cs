@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Cadastro.Aplicacao;
 using Cadastro.Dominio;
@@ -15,27 +12,24 @@ namespace Cadastro.UI.Controllers
         {
             var app = new UsuarioAplicacao();
             var usuario = app.ListarPorId(user.Email, user.Senha);
-            
+
             if (usuario == null)
             {
-                return HttpNotFound();
+                ModelState.AddModelError("", "Usuário ou senha não confere");
+                return View();
             }
-            else
-            {
-                Session["usuarioid"] = user.Email;
-                
-                return RedirectToAction("Index", "Home");
-                
-            }
+
+            Session["usuarioid"] = user.Email;
+
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Logar()
         {
-            if (Session["usuarioid"] != null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            if (Session["usuarioid"] != null) return RedirectToAction("Index", "Home");
             var usuario = new Usuario();
+            usuario.Email = "jose@teste.com";
+            usuario.Senha = "123";
             return View(usuario);
         }
 
@@ -43,11 +37,11 @@ namespace Cadastro.UI.Controllers
         {
             var app = new UsuarioAplicacao();
             var cidade = app.EncheComoCidade();
- 
 
-            ViewBag.Cidade = new SelectList(cidade,"NomeCidade","NomeCidade");
 
-           return View();
+            ViewBag.Cidade = new SelectList(cidade, "NomeCidade", "NomeCidade");
+
+            return View();
         }
 
         [HttpPost]
@@ -55,6 +49,7 @@ namespace Cadastro.UI.Controllers
         {
             var app = new UsuarioAplicacao();
             usuario.DataCadastro = DateTime.Now;
+            usuario.DataNascimento = Convert.ToDateTime("27/05/1974");
             app.NewUsuario(usuario);
 
             var cidade = app.EncheComoCidade();
@@ -65,7 +60,6 @@ namespace Cadastro.UI.Controllers
 
         public ActionResult Logout()
         {
-
             Session.Remove("usuarioid");
 
             return RedirectToAction("Logar", "Usuario");

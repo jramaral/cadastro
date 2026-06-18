@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Cadastro.UI.Controllers
 {
@@ -10,16 +6,8 @@ namespace Cadastro.UI.Controllers
     {
         public ActionResult Index()
         {
-            if (Session["usuarioid"] == null)
-            {
-                return RedirectToAction("Logar", "Usuario");
-            }
+            if (Session["usuarioid"] == null) return RedirectToAction("Logar", "Usuario");
             return View();
         }
-        
-
-
-
-
     }
 }

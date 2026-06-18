@@ -3,120 +3,123 @@
 
 @{
     ViewBag.Title = "Index";
-      
 }
 
-<div class="container">
+<div class="container-page">
     <h2>Cadastro de Alunos</h2>
-    
+
+
     @using (Html.BeginForm())
     {
-        @Html.ActionLink("Voltar", "Index", "Alunos", null, new { @class = "btn" })
         <div class="row">
-            <div class="column-1">
-                <div class="campo">
-                    <label>Nome</label>
-                    @Html.TextBoxFor(model => Model.Nome, new { maxlength = 70 })
-                   
-                </div>
+
+            <div class="col-12 form-group campo">
+                <label for="Nome" class="form-label">Nome</label>
+                @Html.TextBoxFor(model => Model.Nome, new { @class = "form-control" })
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-6 form-group campo">
+                <label for="CPF" class="form-label">CPF</label>
+                @Html.TextBoxFor(model => Model.Cpf, new { @class = "form-control" })
+            </div>
+            <div class="col-6 form-group">
+                <label>Rg</label>
+                @Html.TextBoxFor(model => model.Rg, new { @class = "form-control" })
             </div>
         </div>
 
         <div class="row">
-            <div class="column">
-                <div class="campo">
-                    <label>CPF</label>
-                    @Html.TextBoxFor(model => Model.Cpf, new { maxlength = 11 })
-                </div>
+            <div class="col-3 form-group campo">
+                <label for="Telefone" class="form-label">Telefone</label>
+                @Html.TextBoxFor(model => Model.Telefone, new { @class = "form-control" })
             </div>
-            <div class="column">
-                <div class="campo">
-                    <label>Rg</label>
-                    @Html.TextBoxFor(model => model.Rg, new { maxlength = 20 })
-                </div>
+            <div class="col-3 form-group campo">
+                <label for="Genero" class="form-label">Gênero</label>
+                @Html.DropDownList("Gênero", new SelectList(Enum.GetValues(typeof(Genero))), "", new { @class = "form-control" })
+            </div>
+            <div class="col-3 form-group campo">
+                <label for="Matricula" class="form-label">Matrícula</label>
+                @Html.TextBoxFor(model => Model.Matricula, new { @class = "form-control" })
+            </div>
+            <div class="col-3 form-group campo">
+                <label for="Idade" class="form-label">Idade</label>
+                @Html.TextBoxFor(model => Model.Idade, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 form-group campo">
+                <label for="Email" class="form-label">E-mail</label>
+                @Html.TextBoxFor(model => Model.Email, new { @class = "form-control" })
+            </div>
+            <div class="col-6 form-group campo">
+                <label for="Endereco" class="form-label">Endereço</label>
+                @Html.TextBoxFor(model => Model.Endereco, new { @class = "form-control" })
             </div>
         </div>
 
         <div class="row">
-            <div class="column">
-                <div class="campo">
-                    <label>Telefone</label>
-                    @Html.TextBoxFor(model => Model.Telefone, new { maxlength = 11 })
-                </div>
+            <div class="col-6 form-group campo">
+                <label for="Cidade" class="form-label">Cidade</label>
+                @Html.DropDownList("Cidade", null, new { @class = "form-control" })
             </div>
-            <div class="column">
-                <div class="campo">
-                    <label>Gênero</label>
-                    @Html.DropDownList("Gênero", new SelectList(Enum.GetValues(typeof(Genero))), "")
+            <div class="col-3 form-group campo">
+                <label for="Data Nascimento" class="form-label">Data Nascimento</label>
+                @Html.TextBoxFor(model => Model.DataNascimento, new { @class = "form-control" })
+            </div>
+            <div class="col-3 form-group campo">
+                <label for="Data Cadastro" class="form-label">Data Cadastro</label>
+                @Html.TextBox("DtCad", DateTime.Now, new { @readonly = "readonly", @class = "form-control" })
+            </div>
 
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="column">
-                <div class="campo">
-                    <label>Matrícula</label>
-                    @Html.TextBoxFor(model => Model.Matricula, new { maxlength = 10 })
-                </div>
-            </div>
-            <div class="column">
-                <div class="campo">
-                    <label>Idade</label>
-                    @Html.TextBoxFor(model => Model.Idade, new { maxlength = 2 })
-
-                </div>
-            </div>
         </div>
 
+        <!--Pai-->
         <div class="row">
-            <div class="column-1">
-                <div class="campo">
-                    <label>E-mail</label>
-                    @Html.TextBoxFor(model => Model.Email, new { maxlength = 50 })
-                </div>
+            <div class="col-6 form-group campo">
+                <label for="Pai" class="form-label">Nome Pai</label>
+                @Html.TextBoxFor(model => Model.NomePai, new { @class = "form-control" })
+            </div>
+            <div class="col-6 form-group campo">
+                <label for="Mae" class="form-label">Nome Mãe</label>
+                @Html.TextBoxFor(model => Model.NomeMae, new { @class = "form-control" })
             </div>
         </div>
         <div class="row">
-            <div class="column-1">
-                <div class="campo">
-                    <label>Cidade</label>
-                    @Html.DropDownList("Cidade", string.Empty)
-                </div>
+            <div class="col-4">
+                <button class="btn btn-primary tam-with-40" type="submit" name="submit">Salvar</button>
+                @Html.ActionLink("Voltar", "Index", "Alunos", null, new { @class = "btn btn-success tam-with-40" })
             </div>
         </div>
-        <div class="row">
-            <div class="column">
-                <div class="campo">
-                    <label>Data Cadastro</label>
-                    @Html.TextBox("DtCad",DateTime.Now, new { @readonly = "readonly"})
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="column">
-                <div class="campo">
-                    <label>Data Nascimento</label>
-                    @Html.TextBoxFor(model => Model.DataNascimento)
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="column-1">
-                <div class="campo">
-                    <label>Nome Pai</label>
-                    @Html.TextBoxFor(model => Model.NomePai, new { maxlength = 50 })
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="column-1">
-                <div class="campo">
-                    <label>Nome Pai</label>
-                    @Html.TextBoxFor(model => Model.NomeMae, new { maxlength = 50 })
-                </div>
-            </div>
-        </div>
-        <button class="btn submit" type="submit" name="submit">Salvar</button>
+
+        
+        @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCadastroCidade">Large modal</button>*@
     }
+
+
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalCadastroCidade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 

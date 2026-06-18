@@ -1,63 +1,74 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Cadastro de Alunos</title>
+
+    <!-- Web Fonts  -->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet"
+          type="text/css">
+    <!-- FONT -->
+    <link rel="stylesheet" href="~/Content/vendor/font-awesome/css/font-awesome.min.css"/>
+
+
     @Styles.Render("~/Content/css")
-    
+
 </head>
 <body>
-    @RenderBody()
-    <div class="content">
-        <div class="topo">
-            <header>
-                <nav class="menu-opcoes">
-                    <ul class="menu">
-                        <li class="contact">
-                            <p> Usuário: @Session["usuarioid"] </p>
-                            @Html.ActionLink("Logout", "logout", "Usuario")
-                        </li>
 
-                    </ul>
-                </nav>
+<div class="content">
+    <div class="topo">
+        <header>
+            <nav class="menu-opcoes">
+                <ul class="menu">
+                    <li class="contact">
 
-                <hgroup class="titulo">
-                    <h1>JRA</h1>
-                    <h2>Cadastro de Alunos</h2>
+                        <p><i class="fa fa-user-circle-o" aria-hidden="true"></i> Usuário: @Session["usuarioid"] </p>
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        @Html.ActionLink("Logout", "logout", "Usuario")
 
-                </hgroup>
-                <div id="nav">
-                    <ul>
-                        
-                        <li>
-                            @Html.ActionLink("Cadastro de Alunos", "Index", "Alunos")
-                        </li>
-                        <li>
-                            @Html.ActionLink("Cadastro de Cidades", "Index", "Cidade")
-                        </li>
-                       
-                        <li>
-                            @Html.ActionLink("Relatórios", "Index", "Report")
-                        </li>
-                        <li>
-                            @Html.ActionLink("Gráfico", "Index", "Grafico")
-                        </li>
-                    </ul>
-                </div>
-                
-            </header>
+                    </li>
 
-        </div>
-       
+                </ul>
+            </nav>
 
-        
-       
+            <hgroup class="titulo">
+                <h1>JRA</h1>
+                <h2>Cadastro de Alunos</h2>
+
+            </hgroup>
+            <div id="nav">
+                <ul>
+
+                    <li>
+                        @Html.ActionLink("Cadastro de Alunos", "Index", "Alunos")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Cadastro de Diretores", "Index", "Diretor")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Cadastro de Cidades", "Index", "Cidade")
+                    </li>
+
+                    <li>
+                        @Html.ActionLink("Relatórios", "Index", "Report")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Gráfico", "Index", "Grafico")
+                    </li>
+                </ul>
+            </div>
+
+        </header>
+
     </div>
-   
-    @Scripts.Render("~/bundles/jquery")
-    
-    @RenderSection("scripts", required: false)
+</div>
+@RenderBody()
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/js")
+
+@RenderSection("scripts", false)
 </body>
 </html>

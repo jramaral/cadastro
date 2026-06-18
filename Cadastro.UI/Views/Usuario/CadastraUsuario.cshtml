@@ -1,9 +1,6 @@
-﻿
-@using Cadastro.Dominio
-
+﻿@using Cadastro.Dominio
 @model Cadastro.Dominio.Usuario
 @{
-    
     var meuModel = DateTime.Now;
 
     ViewBag.Title = "CadastraUsuario";
@@ -38,13 +35,13 @@
                 </div>
             </div>
         </div>
-               
+
         <div class="row">
             <div class="column">
                 <div class="campo">
                     <label>Gênero</label>
-                        @Html.DropDownList("Gênero", new SelectList(Enum.GetValues(typeof(Genero))),"")
-                   
+                    @Html.DropDownList("Gênero", new SelectList(Enum.GetValues(typeof(Genero))), "")
+
                 </div>
             </div>
         </div>
@@ -83,6 +80,7 @@
         <button class="btn submit" type="submit" name="submit">Salvar</button>
     }
 </div>
+
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")
 }

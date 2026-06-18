@@ -1,134 +1,102 @@
 ﻿@using Cadastro.Dominio
 @model Cadastro.Dominio.Aluno
 @{
-
 }
 
-<div class="container">
-    <h2>Editar de Cidade</h2>
+<div class="container-page">
+
     @using (Html.BeginForm())
     {
-
-
-        <p>
-            @Html.ActionLink("Voltar", "Index", "Cidade", null, new { @class = "btn" })
-        </p>
-
         @Html.HiddenFor(model => model.Codigo)
         <div class="row">
-            <div class="column-1">
-                <div class="campo">
-                    <label>Nome</label>
-                    @Html.TextBoxFor(model => Model.Nome, new { maxlength = 70 })
 
-                </div>
+            <div class="col-6 form-group campo">
+                <label for="Nome" class="form-label">Nome</label>
+                @Html.TextBoxFor(model => Model.Nome, new { @class = "form-control" })
+
             </div>
+
         </div>
 
         <div class="row">
-            <div class="column">
-                <div class="campo">
-                    <label>CPF</label>
-                    @Html.TextBoxFor(model => Model.Cpf, new { maxlength = 11 })
-                </div>
+            <div class="col-3 form-group campo">
+                <label for="CPF" class="form-label">CPF</label>
+                @Html.TextBoxFor(model => Model.Cpf, new { @class = "form-control" })
             </div>
-            <div class="column">
-                <div class="campo">
-                    <label>Rg</label>
-                    @Html.TextBoxFor(model => model.Rg, new { maxlength = 20 })
-                </div>
+            <div class="col-3 form-group">
+                <label>Rg</label>
+                @Html.TextBoxFor(model => model.Rg, new { @class = "form-control" })
             </div>
         </div>
 
         <div class="row">
-            <div class="column">
-                <div class="campo">
-                    <label>Telefone</label>
-                    @Html.TextBoxFor(model => Model.Telefone, new { maxlength = 11 })
-                </div>
+            <div class="col-3 form-group campo">
+                <label for="Telefone" class="form-label">Telefone</label>
+                @Html.TextBoxFor(model => Model.Telefone, new { @class = "form-control" })
             </div>
-            <div class="column">
-                <div class="campo">
-                    <label>Gênero</label>
-                    @Html.DropDownList("Gênero", new SelectList(Enum.GetValues(typeof(Genero))), Model.Sexo)
-
-                </div>
+            <div class="col-3 form-group campo">
+                <label for="Genero" class="form-label">Gênero</label>
+                @Html.DropDownList("Gênero", new SelectList(Enum.GetValues(typeof(Genero))), "", new { @class = "form-control" })
             </div>
         </div>
         <div class="row">
-            <div class="column">
-                <div class="campo">
-                    <label>Matrícula</label>
-                    @Html.TextBoxFor(model => Model.Matricula, new { maxlength = 10 })
-                </div>
+            <div class="col-3 form-group campo">
+                <label for="Matricula" class="form-label">Matrícula</label>
+                @Html.TextBoxFor(model => Model.Matricula, new { @class = "form-control" })
             </div>
-            <div class="column">
-                <div class="campo">
-                    <label>Idade</label>
-                    @Html.TextBoxFor(model => Model.Idade, new { maxlength = 2 })
-
-                </div>
+            <div class="col-3 form-group campo">
+                <label for="Idade" class="form-label">Idade</label>
+                @Html.TextBoxFor(model => Model.Idade, new { @class = "form-control" })
             </div>
         </div>
 
         <div class="row">
-            <div class="column-1">
-                <div class="campo">
-                    <label>E-mail</label>
-                    @Html.TextBoxFor(model => Model.Email, new { maxlength = 50 })
-                </div>
+            <div class="col-6 form-group campo">
+                <label for="Email" class="form-label">E-mail</label>
+                @Html.TextBoxFor(model => Model.Email, new { @class = "form-control" })
             </div>
         </div>
         <div class="row">
-            <div class="column-1">
-                <div class="campo">
-                    <label>Endereço</label>
-                    @Html.TextBoxFor(model => model.Endereco, new { maxlength = 50 })
-                </div>
+            <div class="col-6 form-group campo">
+                <label for="Endereco" class="form-label">Endereço</label>
+                @Html.TextBoxFor(model => Model.Endereco, new { @class = "form-control" })
             </div>
         </div>
         <div class="row">
-            <div class="column-1">
-                <div class="campo">
-                    <label>Cidade</label>
-                    @Html.DropDownList("Cidade", Model.Cidade)
-                </div>
+            <div class="col-6 form-group campo">
+                <label for="Cidade" class="form-label">Cidade</label>
+                @Html.DropDownList("Cidade", null, new { @class = "form-control" })
             </div>
+
         </div>
         <div class="row">
-            <div class="column">
-                <div class="campo">
-                    <label>Data Cadastro</label>
-                    @Html.TextBoxFor(model => model.DataCadastro, "", new { @readonly = "readonly" })
-                </div>
+            <div class="col-3 form-group campo">
+                <label for="Data Nascimento" class="form-label">Data Nascimento</label>
+                @Html.TextBoxFor(model => Model.DataNascimento, new { @class = "form-control" })
+            </div>
+            <div class="col-3 form-group campo">
+                <label for="Data Cadastro" class="form-label">Data Cadastro</label>
+                @Html.TextBox("DtCad", DateTime.Now, new { @readonly = "readonly", @class = "form-control" })
             </div>
         </div>
+        <!--Pai-->
         <div class="row">
-            <div class="column">
-                <div class="campo">
-                    <label>Data Nascimento</label>
-                    @Html.TextBoxFor(model => Model.DataNascimento)
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="column-1">
-                <div class="campo">
-                    <label>Nome Pai</label>
-                    @Html.TextBoxFor(model => Model.NomePai, new { maxlength = 50 })
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="column-1">
-                <div class="campo">
-                    <label>Nome Pai</label>
-                    @Html.TextBoxFor(model => Model.NomeMae, new { maxlength = 50 })
-                </div>
+            <div class="col-6 form-group campo">
+                <label for="Pai" class="form-label">Nome Pai</label>
+                @Html.TextBoxFor(model => Model.NomePai, new { @class = "form-control" })
             </div>
         </div>
 
-        <button class="btn submit" type="submit" name="submit">Salvar</button>
+        <!--Mae-->
+        <div class="row">
+            <div class="col-6 form-group campo">
+                <label for="Mae" class="form-label">Nome Mãe</label>
+                @Html.TextBoxFor(model => Model.NomeMae, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit" name="submit">Salvar</button>
+        @Html.ActionLink("Voltar", "Index", "Alunos", null, new { @class = "btn btn-success" })
     }
 </div>
 
